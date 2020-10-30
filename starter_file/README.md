@@ -39,6 +39,10 @@ With an accuracy score of 80%, the best model is VotingEnsemble classifer. After
 
 _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
+#### RunDetails
+
+![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
+
 ## Hyperparameter Tuning
 
 _TODO_: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
@@ -56,10 +60,17 @@ The parameter sampler used is the `RandomParameterSampling`, a class that define
 
 ### Results
 
-_TODO_: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 The accuracy score for this step is 90%. **For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
 
 _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+
+#### RunDetails
+
+![RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20run%20with%20parameter.png)
+
+![Run](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Run%20progress.png)
+
+![BestRun](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Run.png)
 
 ## Model Deployment
 
