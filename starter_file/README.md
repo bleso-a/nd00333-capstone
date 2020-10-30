@@ -1,48 +1,74 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# Predicting Loan Status using Azure Machine Learning
 
-# Your Project Title Here
-
-*TODO:* Write a short introduction to your project.
-
-## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+This project is part of the Udacity Machine Learning with Microsoft Azure Nanodegree. In this project, we built a machine learning model to predict loan status of individuals. We built the model using HyperDrive Config and AUtoML run, and deployed the model as a service.
 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+
+The dataset was obtained from Kaggle - an open source platform for data science competitions. Find the link [here](https://www.kaggle.com/altruistdelhite04/loan-prediction-problem-dataset). The dataset is a Loan prediction dataset, which was used to predict the applicant loan status.
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+
+The dataset contains features like Gender, Marital status, Dependency status, Education, Employement status, Applicant Income, Co-applicant Income, Loan Amount, Credit History, and Property Area. All to predict whether the applicant should receive a loan in the target column - Loan Status.
+
+To build the machine learning model, the dataset was cleaned, using a written function in `train.py` file. This is a step to ensure good metrics score.
+After the data preprocessing step, the cleaned dataset will be used in the `hyperparameter step` and `AutoML run` to build the model and obtain an accuracy score from the best run.
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+
+To bring the dataset into the workspace, it was uploaded to `Azure Blob Storage` to retrieve a csv [link](https://cap.blob.core.windows.net/cap/train.csv). A url object was created from here, and passed into the `TabularDatasetFactory` method to retrieve a DataFrame object.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+
+The AutoMl setting contains parameters as explained below.
+`Featurization = auto` - FeaturizationConfig Indicator for whether featurization step should be done automatically or not, or whether customized featurization should be used.
+`n_cross_validations = 4 ` - How many cross validations to perform when user validation data is not specified.
+
+`experiment_timeout_minutes" = 30` - Maximum amount of time in hours that all iterations combined can take before the experiment terminates.
+
+`enable_early_stopping" = True` - Whether to enable early termination if the score is not improving in the short term. The default is False.
+
+`verbosity = logging.INFO` - The verbosity level for writing to the log file.
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+With an accuracy score of 80%, the best model is VotingEnsemble classifer. After preprocessing, that is, spliting the data into train & test dataset, and concatenating the training data together. The automl config takes the training data, labelled data, cross validation is set to 5. For the model the stopping criteria is at iteration 50 and experiment_timeout_minutes at 30.
+
+**To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
+
+_TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+_TODO_: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+
+After loading the dataset, it needs to be processed, and the approach is using a fucntion `cleandata` to perform the preprocessing task. To preprocess the categorical features, one-hot encoding was done. Then next step splits the data into train and test sets, for the modelling task. To train the model, the logistic regression algorithm was used, which is an algorith, for a classification problem.
+The Logisitc regression hyperparameters, `C & max_iter` were utilized.
+
+**RandomParameterSampling**
+The parameter sampler used is the `RandomParameterSampling`, a class that defines random sampling over a hyperparameter search space. The parameter values are choosen from a set of discrete values or a distribution over a continuous range. So this makes the computation less expensive.
+
+**BanditPolicy**
+`BanditPolicy`, an early termination policy which is based on `slack factor/slack amount` and `evaluation_interval`. If the primary metric is not within the specified ``slack factor/slack amount`, the policy terminates any runs and this is done with respect to the best performing training run.
+
+**For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+_TODO_: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The accuracy score for this step is 90%. **For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
+
+_TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+
+_TODO_: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+_TODO_ Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+
+- A working model
+- Demo of the deployed model
+- Demo of a sample request sent to the endpoint and its response

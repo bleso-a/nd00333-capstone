@@ -1,0 +1,54 @@
+2020-10-30 14:38:25.272 - INFO - 50829 - azureml.train.automl.automlconfig._start_execution:237 - No compute target or run config provided. Running local legacy run.
+2020-10-30 14:38:25.280 - INFO - 50829 - azureml.train.automl.automlconfig._start_execution:257 - Submitting local legacy run.
+2020-10-30 14:40:18.409 - INFO - 50829 - azureml.train.automl.automlconfig._start_execution:257 - Submitting local legacy run.
+2020-10-30 14:40:23.604 - CRITICAL - 50829 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: IncompatibleOrMissingDependency
+Class: ConfigException
+Message: ConfigException:
+	Message: Module 'azureml-train-automl-runtime' is required in the current environment to run local in process runs. Please install this dependency (e.g. `pip install azureml-train-automl-runtime`) or provide a RunConfiguration.
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Module 'azureml-train-automl-runtime' is required in the current environment to run local in process runs. Please install this dependency (e.g. `pip install azureml-train-automl-runtime`) or provide a RunConfiguration.",
+        "target": "local",
+        "inner_error": {
+            "code": "NotSupported",
+            "inner_error": {
+                "code": "IncompatibleOrMissingDependency"
+            }
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 343, in fit
+    raise ConfigException._with_error(
+
+ExceptionTarget: local
+2020-10-30 14:40:23.606 - INFO - 50829 - azureml.train.automl._azureautomlclient._fail_parent_run:740 - No parent run to fail
+2020-10-30 14:57:24.773 - INFO - 50829 - azureml.train.automl.automlconfig._start_execution:257 - Submitting local legacy run.
+2020-10-30 14:57:29.831 - CRITICAL - 50829 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: IncompatibleOrMissingDependency
+Class: ConfigException
+Message: ConfigException:
+	Message: Module 'azureml-train-automl-runtime' is required in the current environment to run local in process runs. Please install this dependency (e.g. `pip install azureml-train-automl-runtime`) or provide a RunConfiguration.
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Module 'azureml-train-automl-runtime' is required in the current environment to run local in process runs. Please install this dependency (e.g. `pip install azureml-train-automl-runtime`) or provide a RunConfiguration.",
+        "target": "local",
+        "inner_error": {
+            "code": "NotSupported",
+            "inner_error": {
+                "code": "IncompatibleOrMissingDependency"
+            }
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 343, in fit
+    raise ConfigException._with_error(
+
+ExceptionTarget: local
+2020-10-30 14:57:29.833 - INFO - 50829 - azureml.train.automl._azureautomlclient._fail_parent_run:740 - No parent run to fail
