@@ -81,6 +81,14 @@ The two things you need to accomplish in your entry script are:
 
 To interact with the endpoint, a json object was created to send data to the endpoint and get prediction results back. Full details in the screen recording.
 
+##### screenshot showing the model endpoint as active.
+
+**Endpoint**
+![Endpoint](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Endpoint.png)
+
+**Interaction**
+![Endpoint](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Interaction.png)
+
 ## Screen Recording
 
 Watch the [Video](https://youtu.be/0CN12uJnAMA) here
