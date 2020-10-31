@@ -76,7 +76,7 @@ The accuracy score for this step is 90%. **For future work**, it would be nice t
 The best model which is from the hyperparameter search is deployed.
 In this section, we will talk about the model deployment. The best run of the hyperdrive was deployed, and that was done using `curated_env` object in the notebook to create environment to deploy the already registered model. Using the `Model.deploy()` method the model was deployed, and made available for interaction with an endpoint. Also the `score.py` file which is the entry script receives data submitted to a deployed web service and passes it to the model. It then takes the response returned by the model and returns that to the client.
 
-The two things you need to accomplish in your entry script are:
+The two things accomplished in the entry script are:
 
 - Loading the model (using a function called init())
 - Running the model on input data (using a function called run())
