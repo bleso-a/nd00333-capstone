@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import os
-from sklearn.externals import joblib
+from azureml.core.model import Model
 
 
 def init():

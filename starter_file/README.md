@@ -39,7 +39,7 @@ With an accuracy score of 80%, the best model is VotingEnsemble classifer. After
 
 _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
-#### RunDetails
+#### RunDetails - AutoML Best Run Details
 
 ![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
 
@@ -48,7 +48,7 @@ _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a sc
 _TODO_: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
 After loading the dataset, it needs to be processed, and the approach is using a fucntion `cleandata` to perform the preprocessing task. To preprocess the categorical features, one-hot encoding was done. Then next step splits the data into train and test sets, for the modelling task. To train the model, the logistic regression algorithm was used, which is an algorith, for a classification problem.
-The Logisitc regression hyperparameters, `C & max_iter` were utilized.
+**The Logisitc regression hyperparameters, `C & max_iter` were utilized.**
 
 **RandomParameterSampling**
 The parameter sampler used is the `RandomParameterSampling`, a class that defines random sampling over a hyperparameter search space. The parameter values are choosen from a set of discrete values or a distribution over a continuous range. So this makes the computation less expensive.
@@ -62,9 +62,7 @@ The parameter sampler used is the `RandomParameterSampling`, a class that define
 
 The accuracy score for this step is 90%. **For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
 
-_TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-
-#### RunDetails
+#### RunDetails - HyperDrive Best Run Details
 
 ![RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20run%20with%20parameter.png)
 
@@ -72,14 +70,17 @@ _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a sc
 
 ![BestRun](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Run.png)
 
-## Model Deployment
+## Model Deployment - Can be found in the `hyperparameter_tuning.ipynb` notebook
 
-_TODO_: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+In this section, we will talk about the model deployment. The best run of the hyperdrive was deployed, and that was done using `curated_env` object in the notebook to create environment to deploy the already registered model. Using the `Model.deploy()` method the model was deployed, and made available for interaction with an endpoint. Also the `score.py` file which is the entry script receives data submitted to a deployed web service and passes it to the model. It then takes the response returned by the model and returns that to the client.
+
+The two things you need to accomplish in your entry script are:
+
+- Loading the model (using a function called init())
+- Running the model on input data (using a function called run())
+
+To interact with the endpoint, a json object was created to send data to the endpoint and get prediction results back. Full details in the screen recording.
 
 ## Screen Recording
 
-_TODO_ Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-
-- A working model
-- Demo of the deployed model
-- Demo of a sample request sent to the endpoint and its response
+Watch the [Video](https://youtu.be/0CN12uJnAMA) here
