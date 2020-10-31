@@ -62,6 +62,7 @@ Details of parameters from the `get_output()` of the AutoML run
 - `n_estimators=100`
 - `n_jobs=1`
 - `random_state=None`
+  See more details in the screenshot below
 
 ![Get Ouput Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Get%20Output%20Details.png)
 
