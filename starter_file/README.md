@@ -51,7 +51,7 @@ Just like the above for AutoML setting, find below the details for the AutoML Co
 
 ### Results
 
-With an accuracy score of 80%, the best model is StandardScalerWrapper, ExtremeRandomTrees. After preprocessing, that is, spliting the data into train & test dataset, and concatenating the training data together. The automl config takes the training data, labelled data, cross validation is set to 5. For the model the stopping criteria is at iteration 50 and experiment_timeout_minutes at 30.
+With an accuracy score of 81%, the best model is StandardScalerWrapper, ExtremeRandomTrees. After preprocessing, that is, spliting the data into train & test dataset, and concatenating the training data together. The automl config takes the training data, labelled data, cross validation is set to 5. For the model the stopping criteria is at iteration 50 and experiment_timeout_minutes at 30.
 
 #### Model Explanation - Model explanations are used to understand what features are directly impacting the model and why
 
@@ -66,6 +66,8 @@ Details of parameters from the `get_output()` of the AutoML run
 ![Get Ouput Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Get%20Output%20Details.png)
 
 **To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
+
+### AutoML Screenshots
 
 **AutoML Parameter Details**
 
