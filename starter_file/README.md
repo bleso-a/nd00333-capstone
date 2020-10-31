@@ -39,8 +39,6 @@ With an accuracy score of 80%, the best model is VotingEnsemble classifer. After
 
 **To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
 
-_TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-
 #### RunDetails - AutoML Best Run Details
 
 ![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
