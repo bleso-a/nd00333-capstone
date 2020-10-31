@@ -47,7 +47,10 @@ _TODO_ Remeber to provide screenshots of the `RunDetails` widget as well as a sc
 
 _TODO_: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
-After loading the dataset, it needs to be processed, and the approach is using a fucntion `cleandata` to perform the preprocessing task. To preprocess the categorical features, one-hot encoding was done. Then next step splits the data into train and test sets, for the modelling task. To train the model, the logistic regression algorithm was used, which is an algorith, for a classification problem.
+After loading the dataset, it needs to be processed, and the approach is using a function `cleandata` to perform the preprocessing task. To preprocess the categorical features, encoding was done. Then next step splits the data into train and test sets, for the modelling task. These steps were performed in the entry script `train.py` which is the entry script for the SKLearn estimator fed into the HyperDrive config. The role of the HyperDrive is then to vary the **parameters C and max_iter** so that the best performing model is found.
+
+To train the model, the logistic regression algorithm was used, which is an algorithm, for a classification problem.
+In order to achieve this, a parameter space and sampling method, an early termination policy, a primary metric name and goal must be provided as part of the hyperdrive config
 **The Logisitc regression hyperparameters, `C & max_iter` were utilized.**
 
 **RandomParameterSampling**
@@ -72,6 +75,7 @@ The accuracy score for this step is 90%. **For future work**, it would be nice t
 
 ## Model Deployment - Can be found in the `hyperparameter_tuning.ipynb` notebook
 
+The best model which is from the hyperparameter search is deployed.
 In this section, we will talk about the model deployment. The best run of the hyperdrive was deployed, and that was done using `curated_env` object in the notebook to create environment to deploy the already registered model. Using the `Model.deploy()` method the model was deployed, and made available for interaction with an endpoint. Also the `score.py` file which is the entry script receives data submitted to a deployed web service and passes it to the model. It then takes the response returned by the model and returns that to the client.
 
 The two things you need to accomplish in your entry script are:
