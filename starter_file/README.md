@@ -21,8 +21,10 @@ To bring the dataset into the workspace, it was uploaded to `Azure Blob Storage`
 
 ## Automated ML
 
-The AutoMl setting contains parameters as explained below.
+The AutoMl setting contains parameters as explained below, and the value I choose for each parameter.
+
 `Featurization = auto` - FeaturizationConfig Indicator for whether featurization step should be done automatically or not, or whether customized featurization should be used.
+
 `n_cross_validations = 4 ` - How many cross validations to perform when user validation data is not specified.
 
 `experiment_timeout_minutes" = 30` - Maximum amount of time in hours that all iterations combined can take before the experiment terminates.
@@ -83,16 +85,16 @@ The two things you need to accomplish in your entry script are:
 - Loading the model (using a function called init())
 - Running the model on input data (using a function called run())
 
-To interact with the endpoint, a json object was created to send data to the endpoint and get prediction results back. Full details in the screen recording.
+To interact with the endpoint, a json object was created to send demo data to the endpoint and get prediction results back. Full details in the screen recording.
 
 ##### screenshot showing the model endpoint as active.
 
-**Endpoint**
+**Endpoint** - Demo of the deployed model
 ![Endpoint](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Endpoint.png)
 
-**Interaction**
+**Interaction** - Demo of a sample request sent to the endpoint and its response
 ![Endpoint](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Interaction.png)
 
-## Screen Recording
+## Screen Recording - To explain the model deployment process.
 
 Watch the [Video](https://youtu.be/0CN12uJnAMA) here
