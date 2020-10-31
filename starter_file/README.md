@@ -33,9 +33,37 @@ The AutoMl setting contains parameters as explained below, and the value I choos
 
 `verbosity = logging.INFO` - The verbosity level for writing to the log file.
 
+### AutoML Config Details
+
+Just like the above for AutoML setting, find below the details for the AutoML Config.
+
+`experiment_timeout_minutes" = 30` - Maximum amount of time in hours that all iterations combined can take before the experiment terminates.
+
+`task = classification` - This is the type of task to be run, in this case, it is a classification task. The model predicts whether a particular user will default on the loan.
+
+`primary_metric = accuracy` - This is the metric that the AutoML will optimize for model selection. For this classfication task, `accuracy` was used.
+
+`training_data = df_train` - This is the training dataset which is a dataframe of the pre-processed data set. It will be used within the experiment, so it contains both the training features and a label column.
+
+`label_column_name = "Loan_Status` - This is the name of the label column, and it indicates the Loan Status, whether the applicant defaulted on the loan or not.
+
+`n_cross_validations = 5 ` - This is the number of cross validations to perform when user validation data is not specified.
+
 ### Results
 
-With an accuracy score of 80%, the best model is VotingEnsemble classifer. After preprocessing, that is, spliting the data into train & test dataset, and concatenating the training data together. The automl config takes the training data, labelled data, cross validation is set to 5. For the model the stopping criteria is at iteration 50 and experiment_timeout_minutes at 30.
+With an accuracy score of 80%, the best model is StandardScalerWrapper, ExtremeRandomTrees. After preprocessing, that is, spliting the data into train & test dataset, and concatenating the training data together. The automl config takes the training data, labelled data, cross validation is set to 5. For the model the stopping criteria is at iteration 50 and experiment_timeout_minutes at 30.
+
+#### Model Explanation - Model explanations are used to understand what features are directly impacting the model and why
+
+![Model Explanation]()
+
+Details of parameters from the `get_output()` of the AutoML run
+
+- `n_estimators=100`
+- `n_jobs=1`
+- `random_state=None`
+
+![Get Ouput Details]()
 
 **To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
 
@@ -43,16 +71,45 @@ With an accuracy score of 80%, the best model is VotingEnsemble classifer. After
 
 ![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
 
+![Screenshot of Parameter Details]()
+
+**RunDetails**
+![New rundetails for automl]()
+
+**Details of the model as shown in the runwidget output**
+![Details of the model as shown in the runwidget output]()
+
+**Details of different models on the primary metric of the experiment**
+![Details of different models on the primary metric of the experiment ]()
+
+**Best Model already registered with it's RunID & other Metrics**
+
+![Registered Model]()
+![Best Model with metrics]()
+
+**Details of the best model from printing the logs**
+![Details of the best Model]()
+
 ## Hyperparameter Tuning
 
 After loading the dataset, it needs to be processed, and the approach is using a function `cleandata` to perform the preprocessing task. To preprocess the categorical features, encoding was done. Then next step splits the data into train and test sets, for the modelling task. These steps were performed in the entry script `train.py` which is the entry script for the SKLearn estimator fed into the HyperDrive config. The role of the HyperDrive is then to vary the **parameters C and max_iter** so that the best performing model is found.
 
+![hyperdrive-accuracy max_iter description]()
+
 To train the model, the logistic regression algorithm was used, which is an algorithm, for a classification problem.
 In order to achieve this, a parameter space and sampling method, an early termination policy, a primary metric name and goal must be provided as part of the hyperdrive config
-**The Logisitc regression hyperparameters, `C & max_iter` were utilized.**
+
+#### **The Logisitc regression hyperparameters, `C & max_iter` were utilized.**
+
+There are various hyperparameters in logistic regression such as C (which is the inverse of the regularization strength, smaller valeus depicts stronger regularization), max_iter (which is the number of iterations before the solver converges). The Hyperdrive then runs with the aim of maximising the accuracy of the model after being passed with various algorithm parameters (mainly C and max_iter) to vary from.
 
 **RandomParameterSampling**
 The parameter sampler used is the `RandomParameterSampling`, a class that defines random sampling over a hyperparameter search space. The parameter values are choosen from a set of discrete values or a distribution over a continuous range. So this makes the computation less expensive.
+
+Find below the details of the parameter i choose below.
+
+`"C": uniform(0.0, 1.0)` - Which draws samples from a uniform distribution of low value = 0, and high value = 1.
+`"max_iter": choice(50, 100, 150, 200, 250)` - Picks a choice of the specified options.
 
 **BanditPolicy**
 `BanditPolicy`, an early termination policy which is based on `slack factor/slack amount` and `evaluation_interval`. If the primary metric is not within the specified ``slack factor/slack amount`, the policy terminates any runs and this is done with respect to the best performing training run.
