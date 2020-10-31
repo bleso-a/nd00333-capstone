@@ -45,8 +45,6 @@ With an accuracy score of 80%, the best model is VotingEnsemble classifer. After
 
 ## Hyperparameter Tuning
 
-_TODO_: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
-
 After loading the dataset, it needs to be processed, and the approach is using a function `cleandata` to perform the preprocessing task. To preprocess the categorical features, encoding was done. Then next step splits the data into train and test sets, for the modelling task. These steps were performed in the entry script `train.py` which is the entry script for the SKLearn estimator fed into the HyperDrive config. The role of the HyperDrive is then to vary the **parameters C and max_iter** so that the best performing model is found.
 
 To train the model, the logistic regression algorithm was used, which is an algorithm, for a classification problem.
