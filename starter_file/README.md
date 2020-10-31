@@ -55,7 +55,7 @@ With an accuracy score of 80%, the best model is StandardScalerWrapper, ExtremeR
 
 #### Model Explanation - Model explanations are used to understand what features are directly impacting the model and why
 
-![Model Explanation]()
+![Model Explanation](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Model%20Expalaantion.png)
 
 Details of parameters from the `get_output()` of the AutoML run
 
@@ -63,7 +63,7 @@ Details of parameters from the `get_output()` of the AutoML run
 - `n_jobs=1`
 - `random_state=None`
 
-![Get Ouput Details]()
+![Get Ouput Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Get%20Output%20Details.png)
 
 **To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
 
@@ -71,30 +71,33 @@ Details of parameters from the `get_output()` of the AutoML run
 
 ![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
 
-![Screenshot of Parameter Details]()
+![Screenshot of Parameter Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Screenshot%20of%20Parameter%20Details.png)
 
-**RunDetails**
-![New rundetails for automl]()
+**RunWidget**
+![New rundetails for automl](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/New%20rundetails%20for%20automl.png)
 
 **Details of the model as shown in the runwidget output**
-![Details of the model as shown in the runwidget output]()
+![Details of the model as shown in the runwidget output](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Model%20with%20Run%20ID:Details%20of%20the%20model%20as%20shown%20in%20the%20runwidget%20output.png)
 
 **Details of different models on the primary metric of the experiment**
-![Details of different models on the primary metric of the experiment ]()
+![Details of different models on the primary metric of the experiment ](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Details%20%20different%20models%20on%20the%20primary%20metric%20of%20your%20experiment%20.png)
 
 **Best Model already registered with it's RunID & other Metrics**
 
-![Registered Model]()
-![Best Model with metrics]()
+![Registered Best Model](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Register%20Best%20Model.png)
+
+![Best Model with metrics](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Model%20with%20Run%20metrics.png)
 
 **Details of the best model from printing the logs**
-![Details of the best Model]()
+In this case, an `utils.py` was written to house the `print_model` function.
+![Details of the best Model](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Details%20of%20the%20best%20Model.png)
 
 ## Hyperparameter Tuning
 
 After loading the dataset, it needs to be processed, and the approach is using a function `cleandata` to perform the preprocessing task. To preprocess the categorical features, encoding was done. Then next step splits the data into train and test sets, for the modelling task. These steps were performed in the entry script `train.py` which is the entry script for the SKLearn estimator fed into the HyperDrive config. The role of the HyperDrive is then to vary the **parameters C and max_iter** so that the best performing model is found.
 
-![hyperdrive-accuracy max_iter description]()
+**Image explaining the parameter**
+![hyperdrive-accuracy max_iter description](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/hyperdrive-accuracy%20max_iter%20description.png)
 
 To train the model, the logistic regression algorithm was used, which is an algorithm, for a classification problem.
 In order to achieve this, a parameter space and sampling method, an early termination policy, a primary metric name and goal must be provided as part of the hyperdrive config
