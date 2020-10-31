@@ -67,19 +67,20 @@ Details of parameters from the `get_output()` of the AutoML run
 
 **To improve an get better metrics** - Since the data is highly imbalanced, I would explore a method to work with the imbalanced features, and use a performance metrics like `F1Score`.
 
-#### RunDetails - AutoML Best Run Details
-
-![AutoML RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/automl%20best%20run.png)
+**AutoML Parameter Details**
 
 ![Screenshot of Parameter Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Screenshot%20of%20Parameter%20Details.png)
 
 **RunWidget**
+
 ![New rundetails for automl](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/New%20rundetails%20for%20automl.png)
 
 **Details of the model as shown in the runwidget output**
+
 ![Details of the model as shown in the runwidget output](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Model%20with%20Run%20ID:Details%20of%20the%20model%20as%20shown%20in%20the%20runwidget%20output.png)
 
 **Details of different models on the primary metric of the experiment**
+
 ![Details of different models on the primary metric of the experiment ](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Details%20%20different%20models%20on%20the%20primary%20metric%20of%20your%20experiment%20.png)
 
 **Best Model already registered with it's RunID & other Metrics**
@@ -89,14 +90,16 @@ Details of parameters from the `get_output()` of the AutoML run
 ![Best Model with metrics](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Model%20with%20Run%20metrics.png)
 
 **Details of the best model from printing the logs**
-In this case, an `utils.py` was written to house the `print_model` function.
-![Details of the best Model](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Details%20of%20the%20best%20Model.png)
+
+- In this case, an `utils.py` was written to house the `print_model` function.
+  ![Details of the best Model](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Details%20of%20the%20best%20Model.png)
 
 ## Hyperparameter Tuning
 
 After loading the dataset, it needs to be processed, and the approach is using a function `cleandata` to perform the preprocessing task. To preprocess the categorical features, encoding was done. Then next step splits the data into train and test sets, for the modelling task. These steps were performed in the entry script `train.py` which is the entry script for the SKLearn estimator fed into the HyperDrive config. The role of the HyperDrive is then to vary the **parameters C and max_iter** so that the best performing model is found.
 
 **Image explaining the parameter**
+
 ![hyperdrive-accuracy max_iter description](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/hyperdrive-accuracy%20max_iter%20description.png)
 
 To train the model, the logistic regression algorithm was used, which is an algorithm, for a classification problem.
@@ -107,14 +110,16 @@ In order to achieve this, a parameter space and sampling method, an early termin
 There are various hyperparameters in logistic regression such as C (which is the inverse of the regularization strength, smaller valeus depicts stronger regularization), max_iter (which is the number of iterations before the solver converges). The Hyperdrive then runs with the aim of maximising the accuracy of the model after being passed with various algorithm parameters (mainly C and max_iter) to vary from.
 
 **RandomParameterSampling**
+
 The parameter sampler used is the `RandomParameterSampling`, a class that defines random sampling over a hyperparameter search space. The parameter values are choosen from a set of discrete values or a distribution over a continuous range. So this makes the computation less expensive.
 
 Find below the details of the parameter i choose below.
 
-`"C": uniform(0.0, 1.0)` - Which draws samples from a uniform distribution of low value = 0, and high value = 1.
-`"max_iter": choice(50, 100, 150, 200, 250)` - Picks a choice of the specified options.
+- `"C": uniform(0.0, 1.0)` - Which draws samples from a uniform distribution of low value = 0, and high value = 1.
+- `"max_iter": choice(50, 100, 150, 200, 250)` - Picks a choice of the specified options.
 
 **BanditPolicy**
+
 `BanditPolicy`, an early termination policy which is based on `slack factor/slack amount` and `evaluation_interval`. If the primary metric is not within the specified ``slack factor/slack amount`, the policy terminates any runs and this is done with respect to the best performing training run.
 
 **For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
@@ -123,13 +128,25 @@ Find below the details of the parameter i choose below.
 
 The accuracy score for this step is 90%. **For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
 
+#### Best Run Hyperparameter Values and Details.
+
+- `Best Run Id: HD_158fc58f-0811-44d9-b6d7-58f87d9e21a8_5`
+
+- `Accuracy: 0.8666666666666667`
+
+- `C: 0.8831212105861365`
+
+- `max_iter: 250`
+
+![Best Run Hyperparameter Values and Details]()
+
 #### RunDetails - HyperDrive Best Run Details
 
-![RunDetails](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20run%20with%20parameter.png)
+![Hyperdrive Run Details]()
 
-![Run](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Run%20progress.png)
+![Run Progress with params]()
 
-![BestRun](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Best%20Run.png)
+![Hyperdrive Best Run]()
 
 ## Model Deployment - Can be found in the `hyperparameter_tuning.ipynb` notebook
 
