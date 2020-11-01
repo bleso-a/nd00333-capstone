@@ -66,14 +66,12 @@ Details of parameters from the `get_output()` of the AutoML run
 
 ![Get Ouput Details](https://github.com/bleso-a/nd00333-capstone/blob/master/Screenshot/Get%20Output%20Details.png)
 
-**For future Work** -
-
-- It would be nice to see other experimentation process, one such experimentation is with feature interactions. The interaction of a prospective applicant and their level of education, for example, may improve the model's ability to make accurate predictions.
+### **For future Work** -
 
 - In the data preprocessing step, the `Applicant` and `Co-applicant` income feature can be engineered to get a better representation of the `income`.
-  Using Domain knowledge in loan and banking, features such as `Equated monthly installment` that represents the fixed payment amount made by a borrower to a lender at a specified date each calendar month, can be created in the dataset to get better prediction.
+  Using Domain knowledge in loan and banking, features such as `Equated monthly installment` that represents the fixed payment amount made by a borrower to a lender at a specified date each calendar month, can be created in the dataset to get better prediction. The `EMI` can help to calculate the `monthly balance` and applicant with higher value, have good chances of not defaulting on loan.
 
-- More compute resources coulc be used for the experiment run.
+- More compute resources could be used for the experiment run.
 
 ### AutoML Screenshots
 
@@ -132,7 +130,9 @@ Find below the details of the parameter i choose below.
 
 `BanditPolicy`, an early termination policy which is based on `slack factor/slack amount` and `evaluation_interval`. If the primary metric is not within the specified ``slack factor/slack amount`, the policy terminates any runs and this is done with respect to the best performing training run.
 
-**For future work**, it would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. A good feature engineering could help to boost the model's accuracy greatly and hence improve the classification accuracy of the model.
+#### Future work.
+
+**For future work**, It would be nice to explore more into the data, by carrying out data cleaning process and feature engineering activities. A good feature engineering could help to boost the model's accuracy greatly and hence improve the classification accuracy of the model.
 Accuracy is not the only evaluation metric process, it would also be nice to explore some other statistical evaluation metrics.
 
 ### Results
